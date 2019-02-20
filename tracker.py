@@ -8,8 +8,7 @@ def refresh_sub_gap():
 	tseries = int(requests.get('https://bastet.socialblade.com/youtube/lookup?query=UCq-Fj5jknLsUf-MWSy4_brA').text)
 	sub_gap = pewds - tseries
 
-	with open("gap.log","a+") as f:
-		f.write("[%s] %d\n" % (datetime.today().isoformat(), sub_gap))
+	print("[%s] %d" % (datetime.today().isoformat(), sub_gap))
 
 	limit = 5000
 	if (sub_gap < limit):
