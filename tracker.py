@@ -15,4 +15,13 @@ def refresh_sub_gap():
 		requests.post('https://maker.ifttt.com/trigger/sub_gap/with/key/{0}'.format(os.environ['IFTTT_WEBHOOK_KEY']), data = { 'value1': "{:.1f}k".format(limit / 1000.0), 'value2': sub_gap });
 		print("[%s] %d" % (datetime.today().isoformat(), "Sent notification"))
 
-refresh_sub_gap()
+def retry(func, max_attempts):
+	attempt = 1
+	while(attempt <= max_attempts):
+		try:
+			return func()
+		except:
+			print("Attempt #{} / {} failed\n{}".format(attempt, max_attempts))
+	print ("Giving up")
+
+retry(refresh_sub_gap, 3)
