@@ -18,6 +18,7 @@ def refresh_sub_gap():
 def retry(func, max_attempts):
 	attempt = 1
 	while(attempt <= max_attempts):
+                attempt += 1
 		try:
 			return func()
 		except:
