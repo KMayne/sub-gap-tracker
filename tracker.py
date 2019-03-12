@@ -21,7 +21,7 @@ def retry(func, max_attempts):
 		try:
 			return func()
 		except:
-			print("Attempt #{} / {} failed\n{}".format(attempt, max_attempts))
+			print("Attempt #{} / {} failed".format(attempt, max_attempts))
 	print ("Giving up")
 
 retry(refresh_sub_gap, 3)
